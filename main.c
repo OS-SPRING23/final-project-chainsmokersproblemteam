@@ -37,21 +37,21 @@ while (1)
            case 0: sem_post (&match); /* match and paper */
                    sem_post (&paper);
 			syscall(333,"The agent has placed the match onto the table\n");
-			//printf("Agent has put match and paper on the table\n");
+			printf("Agent has put match and paper on the table\n");
 			printf("SMOKING A CIGAR %d time\n", x++);
 			s++;
                    break;
            case 1: sem_post (&match); /* match and tobacco */
                    sem_post (&tobacco);
 			syscall(333,"The agent has placed the  match and tobacco onto the table\n");
-			//printf("Agent has put match and tobacco on the table\n");
+			printf("Agent has put match and tobacco on the table\n");
 				printf("SMOKING A CIGAR %d time\n", x++);
 			p++;
                    break;
            case 2: sem_post (&paper); /* tobacco and paper */
                    sem_post (&tobacco);
 			syscall(333,"The agent has placed paper and tobacco onto the table\n");
-			//printf("Agent has put paper and tobacco on the table\n");
+			printf("Agent has put paper and tobacco on the table\n");
 				printf("SMOKING A CIGAR %d time\n", x++);
 			m++;
                    break;
@@ -71,7 +71,7 @@ void *smoker_with_tobacco ()
           /* roll cigarette and smoke */
 		syscall(333,"Retrieve Match and Paper");
 		syscall(333,"Smoker with Tobacco is Smoking\n");
-		//printf("tobacco smoking\n");
+		printf("Smoker with tobacco smoking\n");
 		sleep(0.5);
           	sem_post (&required); /* signal to agent */
         }
@@ -89,7 +89,7 @@ void *smoker_with_match ()
           /* roll cigarette and smoke */
 		syscall(333,"Reterieve Tobacco and Paper");
 		syscall(333,"Smoker with Match is Smoking\n");
-		//printf("match smoking\n");
+		printf("Smoker with match smoking\n");
 		sleep(0.5);
           	sem_post (&required); /* signal to agent */
         }
@@ -107,7 +107,7 @@ void *smoker_with_paper ()
 		/* roll cigarette and smoke */
 		syscall(333,"Retreieve Tobacco and Paper");
 		syscall(333,"Smoker with Paper is Smoking\n");
-		//printf("paper smoking\n");
+		printf("Smoker with paper smoking\n");
 		sleep(0.5);
          	sem_post (&required); /* signal to agent */
         }
